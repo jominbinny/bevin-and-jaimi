@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-static-index.mjs",
     "build:dev": "vite build --mode development",
-    "preview": "vite build && node scripts/ensure-preview-server-entry.mjs && vite preview",
+    "preview": "npm run build && vite preview",
     "lint": "eslint ."
   },
   "dependencies": {
