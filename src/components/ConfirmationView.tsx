@@ -1,20 +1,13 @@
 import { MapPin, Phone } from "lucide-react";
 
 interface ConfirmationViewProps {
-  guestName?: string;
   onEdit: () => void;
 }
 
-export function ConfirmationView({ guestName, onEdit }: ConfirmationViewProps) {
+export function ConfirmationView({ onEdit }: ConfirmationViewProps) {
   return (
     <section className="text-center py-10 px-6 animate-scale-in">
       <div className="max-w-sm mx-auto">
-        {guestName && (
-          <h3 className="font-serif text-2xl font-medium text-foreground mb-4 uppercase tracking-wide">
-            {guestName}
-          </h3>
-        )}
-
         <p className="font-serif text-base text-foreground/80 italic mb-8 leading-relaxed">
           Your RSVP has been received! We look forward to celebrating with you.
         </p>

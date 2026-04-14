@@ -1,20 +1,9 @@
-interface InvitationCardProps {
-  guestName?: string;
-}
-
-export function InvitationCard({ guestName }: InvitationCardProps) {
+export function InvitationCard() {
   return (
     <section className="text-center py-12 px-6 animate-fade-up">
-      {guestName && (
-        <p className="text-[11px] tracking-[0.22em] uppercase text-muted-foreground mb-1.5 font-sans">
-          Exclusive Invitation For
-        </p>
-      )}
-      {guestName && (
-        <h2 className="font-serif text-2xl md:text-3xl font-normal leading-tight text-foreground mb-7 italic">
-          {guestName}
-        </h2>
-      )}
+      <p className="text-[11px] tracking-[0.22em] uppercase text-muted-foreground mb-1.5 font-sans">
+        An Invitation For You
+      </p>
 
       <p className="text-xs tracking-[0.25em] uppercase text-muted-foreground mb-6 font-sans">
         Together with their families

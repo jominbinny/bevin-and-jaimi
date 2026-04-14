@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
-import { z } from "zod";
 import { useState, useCallback, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { InvitationCard } from "@/components/InvitationCard";
@@ -10,12 +8,7 @@ import { RSVPForm } from "@/components/RSVPForm";
 import { ConfirmationView } from "@/components/ConfirmationView";
 import { FloralOverlay } from "@/components/FloralOverlay";
 
-const searchSchema = z.object({
-  name: fallback(z.string(), "").default(""),
-});
-
 export const Route = createFileRoute("/")({
-  validateSearch: zodValidator(searchSchema),
   component: WeddingInvitation,
   head: () => ({
     meta: [
@@ -28,17 +21,21 @@ export const Route = createFileRoute("/")({
 });
 
 function WeddingInvitation() {
-  const { name } = Route.useSearch();
   const [submitted, setSubmitted] = useState(false);
   const [attending, setAttending] = useState(false);
 
   useEffect(() => {
+    const cleanUrl = `${window.location.pathname}${window.location.hash}`;
+    if (window.location.search) {
+      window.history.replaceState({}, "", cleanUrl);
+    }
+
     const saved = localStorage.getItem("wedding_rsvp");
     if (saved) setSubmitted(true);
   }, []);
 
   const handleSubmit = useCallback((count: number) => {
-    localStorage.setItem("wedding_rsvp", JSON.stringify({ name, count, date: new Date().toISOString() }));
+    localStorage.setItem("wedding_rsvp", JSON.stringify({ count, date: new Date().toISOString() }));
     setSubmitted(true);
 
     const end = Date.now() + 2000;
@@ -48,7 +45,7 @@ function WeddingInvitation() {
       if (Date.now() < end) requestAnimationFrame(fire);
     };
     fire();
-  }, [name]);
+  }, []);
 
   const handleEdit = useCallback(() => {
     localStorage.removeItem("wedding_rsvp");
@@ -73,7 +70,7 @@ function WeddingInvitation() {
           </p>
         </div>
 
-        <InvitationCard guestName={name || undefined} />
+        <InvitationCard />
 
         <div className="flex justify-center my-2">
           <div className="w-16 h-px bg-gold/40" />
@@ -86,7 +83,7 @@ function WeddingInvitation() {
         </div>
 
         {submitted ? (
-          <ConfirmationView guestName={name || undefined} onEdit={handleEdit} />
+          <ConfirmationView onEdit={handleEdit} />
         ) : attending ? (
           <RSVPForm onSubmit={handleSubmit} />
         ) : (
