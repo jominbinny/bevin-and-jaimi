@@ -1,4 +1,4 @@
-import { _, $ } from "./assets/worker-entry-wjcoUTlM.js";
+import { _, $ } from "./assets/worker-entry-C7944qe_.js";
 import "node:events";
 import "node:async_hooks";
 import "node:stream/web";

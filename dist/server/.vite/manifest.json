@@ -5,30 +5,30 @@
     "src": "%23tanstack-start-plugin-adapters",
     "isDynamicEntry": true
   },
-  "/home/jominbinny/bro-proj/src/styles.css": {
-    "file": "assets/styles-ln-sB5ak.css",
-    "src": "/home/jominbinny/bro-proj/src/styles.css"
+  "/home/jominbinny/bro-proj/bevin-and-jaimi/src/styles.css": {
+    "file": "assets/styles-Ws8We1Y7.css",
+    "src": "/home/jominbinny/bro-proj/bevin-and-jaimi/src/styles.css"
   },
-  "_router-RTwfe3cB.js": {
-    "file": "assets/router-RTwfe3cB.js",
+  "_router-x6hGjtju.js": {
+    "file": "assets/router-x6hGjtju.js",
     "name": "router",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-wjcoUTlM.js"
+      "_worker-entry-C7944qe_.js"
     ],
     "dynamicImports": [
       "src/routes/index.tsx?tsr-split=component"
     ],
     "assets": [
-      "assets/styles-ln-sB5ak.css"
+      "assets/styles-Ws8We1Y7.css"
     ]
   },
-  "_worker-entry-wjcoUTlM.js": {
-    "file": "assets/worker-entry-wjcoUTlM.js",
+  "_worker-entry-C7944qe_.js": {
+    "file": "assets/worker-entry-C7944qe_.js",
     "name": "worker-entry",
     "dynamicImports": [
       "tanstack-start-manifest:v",
-      "_router-RTwfe3cB.js",
+      "_router-x6hGjtju.js",
       "node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
       "%23tanstack-start-plugin-adapters"
     ]
@@ -40,17 +40,17 @@
     "isDynamicEntry": true
   },
   "src/routes/index.tsx?tsr-split=component": {
-    "file": "assets/index-jgnvPuZ6.js",
+    "file": "assets/index-BMR-vIr3.js",
     "name": "index",
     "src": "src/routes/index.tsx?tsr-split=component",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-wjcoUTlM.js",
-      "_router-RTwfe3cB.js"
+      "_worker-entry-C7944qe_.js",
+      "_router-x6hGjtju.js"
     ]
   },
   "tanstack-start-manifest:v": {
-    "file": "assets/_tanstack-start-manifest_v-4H_e5Ln5.js",
+    "file": "assets/_tanstack-start-manifest_v-ygHZSjXe.js",
     "name": "_tanstack-start-manifest_v",
     "src": "tanstack-start-manifest:v",
     "isDynamicEntry": true
@@ -61,7 +61,7 @@
     "src": "virtual:cloudflare/worker-entry",
     "isEntry": true,
     "imports": [
-      "_worker-entry-wjcoUTlM.js"
+      "_worker-entry-C7944qe_.js"
     ]
   }
 }
