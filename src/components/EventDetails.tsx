@@ -7,8 +7,8 @@ export function EventDetails() {
     <section className="text-center py-10 px-6 animate-fade-up delay-200">
       <div className="flex items-center justify-center gap-6 md:gap-10 mb-8">
         <div className="text-center">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans">MAY</p>
-          <p className="text-xs text-muted-foreground font-sans">2026, Sunday</p>
+          <p className="text-sm md:text-base tracking-[0.2em] uppercase text-muted-foreground font-sans">MAY</p>
+          <p className="text-sm md:text-base text-muted-foreground font-sans">2026, Sunday</p>
         </div>
 
         <div className="flex flex-col items-center">
@@ -18,8 +18,8 @@ export function EventDetails() {
         </div>
 
         <div className="text-center">
-          <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans">12 PM</p>
-          <p className="text-xs text-muted-foreground font-sans">Onwards</p>
+          <p className="text-sm md:text-base tracking-[0.2em] uppercase text-muted-foreground font-sans">10 AM</p>
+          <p className="text-sm md:text-base text-muted-foreground font-sans">Onwards</p>
         </div>
       </div>
 

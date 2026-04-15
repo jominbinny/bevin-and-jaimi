@@ -1,4 +1,4 @@
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, MessageCircle } from "lucide-react";
 
 export function ConfirmationView() {
   return (
@@ -21,8 +21,8 @@ export function ConfirmationView() {
                   MAY
                 </p>
               </div>
-              <p className="text-xs text-muted-foreground font-sans">Sunday</p>
-              <p className="text-xs text-muted-foreground font-sans">12 PM</p>
+              <p className="text-sm md:text-base text-muted-foreground font-sans">Sunday</p>
+              <p className="text-sm md:text-base text-muted-foreground font-sans">10 AM</p>
             </div>
 
             {/* Venue */}
@@ -49,15 +49,18 @@ export function ConfirmationView() {
 
         {/* Contact */}
         <a
-          href="tel:+919497192652"
-          className="inline-flex items-center gap-2 text-sm text-foreground/70 font-sans mb-6 hover:text-foreground transition-colors"
+          href="https://wa.me/919946317984?text=Hello%20I%20have%20a%20question%20about%20the%20wedding%20invitation."
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Send a WhatsApp message to 9946317984"
+          className="inline-flex items-center gap-2 text-base md:text-lg text-foreground/75 font-sans mb-6 hover:text-foreground transition-colors"
         >
-          <Phone className="w-4 h-4" />
-          9497192652
+          <MessageCircle className="w-5 h-5 text-[#25D366]" />
+          9946317984
         </a>
 
         {/* Final message */}
-        <p className="text-xs text-muted-foreground font-sans">
+        <p className="text-sm md:text-base text-muted-foreground font-sans">
           See you at the celebration 🎉
         </p>
       </div>
