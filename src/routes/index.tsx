@@ -30,14 +30,21 @@ function WeddingInvitation() {
       window.history.replaceState({}, "", cleanUrl);
     }
 
-    const saved = localStorage.getItem("wedding_rsvp");
-    if (saved) setSubmitted(true);
   }, []);
 
-  const handleSubmit = useCallback((count: number) => {
-    localStorage.setItem("wedding_rsvp", JSON.stringify({ count, date: new Date().toISOString() }));
+  const handleSubmit = useCallback(async (count: number) => {
+  try {
+    await fetch("http://localhost:5000/api/rsvp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ count }),
+    });
+
     setSubmitted(true);
 
+    // 🎉 confetti (keep same)
     const end = Date.now() + 2000;
     const fire = () => {
       confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ["#c9a84c", "#f0d78c", "#ffffff"] });
@@ -45,13 +52,14 @@ function WeddingInvitation() {
       if (Date.now() < end) requestAnimationFrame(fire);
     };
     fire();
-  }, []);
 
-  const handleEdit = useCallback(() => {
-    localStorage.removeItem("wedding_rsvp");
-    setSubmitted(false);
-    setAttending(true);
-  }, []);
+  } catch (err) {
+    console.error("RSVP failed:", err);
+  }
+}, []);
+
+
+  
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -83,7 +91,7 @@ function WeddingInvitation() {
         </div>
 
         {submitted ? (
-          <ConfirmationView onEdit={handleEdit} />
+          <ConfirmationView />
         ) : attending ? (
           <RSVPForm onSubmit={handleSubmit} />
         ) : (
