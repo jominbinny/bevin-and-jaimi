@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const EVENT_DATE = new Date("2026-05-31T12:00:00+05:30");
+const EVENT_DATE = new Date("2026-05-31T10:00:00+05:30");
 const INITIAL_TIME = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
 function getTimeLeft() {
