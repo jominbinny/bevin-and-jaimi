@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Minus, Plus } from "lucide-react";
 
 interface RSVPFormProps {
-  onSubmit: (count: number) => void;
+  onSubmit: (count: number) => Promise<void> | void;
 }
 
 export function RSVPForm({ onSubmit }: RSVPFormProps) {
   const [count, setCount] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitLockRef = useRef(false);
+
+  const handleSubmit = async () => {
+    if (submitLockRef.current) return;
+
+    submitLockRef.current = true;
+    setIsSubmitting(true);
+
+    try {
+      await onSubmit(count);
+    } finally {
+      submitLockRef.current = false;
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="text-center py-10 px-6 animate-fade-up delay-300">
@@ -22,6 +38,7 @@ export function RSVPForm({ onSubmit }: RSVPFormProps) {
 
         <div className="flex items-center justify-center gap-6 mb-3">
           <button
+            disabled={isSubmitting}
             onClick={() => setCount((c) => Math.max(1, c - 1))}
             className="w-10 h-10 rounded-full border border-border bg-warm-white flex items-center justify-center text-foreground/70 hover:bg-sage-light hover:border-sage transition-colors"
           >
@@ -33,6 +50,7 @@ export function RSVPForm({ onSubmit }: RSVPFormProps) {
           </span>
 
           <button
+            disabled={isSubmitting}
             onClick={() => setCount((c) => c + 1)}
             className="w-10 h-10 rounded-full border border-border bg-warm-white flex items-center justify-center text-foreground/70 hover:bg-sage-light hover:border-sage transition-colors"
           >
@@ -45,10 +63,13 @@ export function RSVPForm({ onSubmit }: RSVPFormProps) {
         </p>
 
         <button
-          onClick={() => onSubmit(count)}
-          className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-sans text-sm font-medium tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
+          type="button"
+          disabled={isSubmitting}
+          aria-busy={isSubmitting}
+          onClick={handleSubmit}
+          className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-sans text-sm font-medium tracking-[0.15em] uppercase hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Submit RSVP
+          {isSubmitting ? "Submitting..." : "Submit RSVP"}
         </button>
       </div>
     </section>
